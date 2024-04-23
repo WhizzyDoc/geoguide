@@ -9,7 +9,7 @@ function getCountry(name) {
     fetch(`https://restcountries.com/v3.1/name/${name}`)
     .then(res => {return res.json()})
     .then(data => {
-        //console.log(data)
+        console.log(data)
         c  = data[data.length - 1]
         var temp = `
         <h5 class="w-bold-x">${c.name.common} ${c.flag}</h5>
@@ -22,8 +22,28 @@ function getCountry(name) {
                                 <td>${digify(c.area)} sq. km</td>
                             </tr>
                             <tr>
+                                <td>Population</td>
+                                <td>${digify(c.population)}</td>
+                            </tr>
+                            <tr>
+                                <td>CIOC</td>
+                                <td>${c.cioc}</td>
+                            </tr>
+                            <tr>
+                                <td>Coat of Arms</td>
+                                <td><img src="${c.coatOfArms.svg}" alt="coat of arms" width="100px" height="auto" /></td>
+                            </tr>
+                            <tr>
+                                <td>Flag</td>
+                                <td><img src="${c.flags.svg}" alt="${c.flags.alt}" width="100px" height="auto" /></td>
+                            </tr>
+                            <tr>
                                 <td>Capital</td>
                                 <td>${stringy(c.capital)}</td>
+                            </tr>
+                            <tr>
+                                <td>Continents</td>
+                                <td>${stringy(c.continents)}</td>
                             </tr>
                             <tr>
                                 <td>Capital Info</td>
@@ -34,6 +54,14 @@ function getCountry(name) {
                             <tr>
                                 <td>Borders</td>
                                 <td>${stringy(c.borders)}</td>
+                            </tr>
+                            <tr>
+                                <td>Driving Side</td>
+                                <td>${c.car.side}</td>
+                            </tr>
+                            <tr>
+                                <td>Country Code</td>
+                                <td>${c.idd.root}${c.idd.suffixes[0]}</td>
                             </tr>
                         </tbody>
                     </table>
