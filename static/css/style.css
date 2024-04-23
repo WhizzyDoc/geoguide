@@ -65,6 +65,8 @@
 .content {
     padding: 15px;
     z-index: 1;
+    height: calc(100vh - 50px);
+    overflow-y: auto;
 }
 .back-btn {
     background: transparent;
