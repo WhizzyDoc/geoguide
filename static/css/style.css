@@ -3,13 +3,41 @@
     padding: 0;
     margin: 0;
 }
+body {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
 /* custom scroll bar */
 ::-webkit-scrollbar {width: 0px !important;height:1px !important}
 ::-webkit-scrollbar-track {background: #242526;}
 ::-webkit-scrollbar-thumb {background: #3A3B3C;}
+.tab-content {
+    padding: 0 !important;
+    height: calc(100vh - 45px);
+}
+.tab-pane {
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.nav {
+    width: 100vw !important;
+    overflow-x: hidden;
+    background: #eee;
+}
+.nav-link {
+    background: transparent;
+    color: #000;
+}
+.nav-link.active {
+    color: orange !important;
+    background: transparent !important;
+    border: none;
+}
 .app {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: calc(100vh - 45px);
     overflow: hidden;
     background: #fff;
 }
@@ -107,7 +135,7 @@ background: linear-gradient(135deg, blue, navy);
 }
 .c-tab  {
     display: block;
-    height: calc(100vh - 150px) !important;
+    height: calc(100vh - 195px) !important;
     overflow-y: auto !important;
     margin-top: 10px;
     width: 100vw;
