@@ -25,7 +25,10 @@
         <div class="loader">
             <i class="fa fa-spinner roller"></i>
         </div>
-        <div class="app">
+        <!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active container" id="home">
+      <div class="app">
             <div class="field">
                 <h3 class="title">
                     <img src="./static/image/logo.png" alt="" />
@@ -41,6 +44,44 @@
                 </tbody>
             </table>
         </div>
+  </div>
+  <div class="tab-pane container" id="menu1">
+      <div class="app">
+          <div class="field">
+                <h3 class="title">
+                    <img src="./static/image/logo.png" alt="" />
+                    <span>Translate</span><span>Me</span>
+                </h3>
+                
+            </div>
+      </div>
+  </div>
+  <div class="tab-pane container" id="menu2">
+      <div class="app">
+          <div class="field">
+                <h3 class="title">
+                    <img src="./static/image/logo.png" alt="" />
+                    <span>Co</span><span>invert</span>
+                </h3>
+                
+            </div>
+      </div>
+  </div>
+</div>
+        <!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home"><i class="fa fa-globe"></i> GeoGuide</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu1"><i class="fa fa-language"></i> Translate</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu2"><i class="fa fa-exchange"></i> Coinvert</a>
+  </li>
+</ul>
+
+        
         <script src="./static/js/country.js"></script>
         <script src="./static/js/script.js"></script>
         <script>
