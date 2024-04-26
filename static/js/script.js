@@ -193,8 +193,8 @@ icons.forEach(icon => {
 
 /* Currency Converter */
 const dropList = document.querySelectorAll("form select"),
-fromCurrency = document.querySelector(".from select"),
-toCurrency = document.querySelector(".to select"),
+fromCurrency = document.querySelector(".from.c select"),
+toCurrency = document.querySelector(".to.c select"),
 getButton = document.querySelector("form button");
 
 
@@ -253,11 +253,31 @@ function getExchangeRate(){
     exchangeRateTxt.innerText = "Getting exchange rate...";
     let url = `https://v6.exchangerate-api.com/v6/71042e7ca36bd4a13d50193c/latest/${fromCurrency.value}`;
     // fetching api response and returning it with parsing into js obj and in another then method receiving that obj
-    fetch(url).then(response => response.json()).then(result =>{
-        let exchangeRate = result.conversion_rates[toCurrency.value]; // getting user selected TO currency rate
-        let totalExRate = (amountVal * exchangeRate).toFixed(2); // multiplying user entered value with selected TO currency rate
-        exchangeRateTxt.innerText = `${amountVal} ${fromCurrency.value} = ${totalExRate} ${toCurrency.value}`;
-    }).catch(() =>{ // if user is offline or any other error occured while fetching data then catch function will run
+    fetch(url)
+    .then(response => response.json())
+    .then(result =>{
+        if(result.result == "success") {
+            let exchangeRate = result.conversion_rates[toCurrency.value]; // getting user selected TO currency rate
+            let totalExRate = (amountVal * exchangeRate).toFixed(2); // multiplying user entered value with selected TO currency rate
+            exchangeRateTxt.innerText = `${amountVal} ${fromCurrency.value} = ${totalExRate} ${toCurrency.value}`;
+        }
+        else if(result.result == "error") {
+            console.log(result["error-type"])
+        }
+    })
+    .catch((err) =>{ // if user is offline or any other error occured while fetching data then catch function will run
         exchangeRateTxt.innerText = "Something went wrong";
+        console.log(err)
     });
 }
+
+function digify(n) {
+    if(Number.isInteger(n)) {
+        return n.toLocaleString('en-US')
+    }
+    else {
+        let parts = n.split('.');
+        let formInt = parts[0].toLocaleString('en-US');
+        return `${formInt}${parts[1]}`
+    }
+  }
